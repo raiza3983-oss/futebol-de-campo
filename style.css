@@ -1,0 +1,147 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  min-height:100vh;
+  color:white;
+  overflow:hidden;
+  background:#101010;
+}
+
+.stadium-bg{
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)),
+    url("https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=1400&q=80");
+  background-size:cover;
+  background-position:center;
+  z-index:-2;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center, transparent 20%, rgba(0,0,0,.55));
+  z-index:-1;
+}
+
+.app{
+  padding:20px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.player-box{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  background:rgba(0,0,0,.45);
+  padding:14px 18px;
+  border-radius:20px;
+  backdrop-filter:blur(8px);
+}
+
+.avatar{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:#22aa44;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+}
+
+.top-actions{
+  display:flex;
+  gap:10px;
+}
+
+.top-actions button{
+  border:none;
+  border-radius:14px;
+  padding:12px;
+  background:rgba(255,255,255,.12);
+  color:white;
+  font-weight:bold;
+}
+
+.hero{
+  text-align:center;
+  margin-top:60px;
+}
+
+.hero h1{
+  font-size:52px;
+  color:#ffd000;
+  text-shadow:0 4px 20px rgba(0,0,0,.8);
+}
+
+.hero h2{
+  margin-top:8px;
+  font-size:24px;
+}
+
+.tag{
+  display:inline-block;
+  margin-top:14px;
+  background:#111;
+  padding:10px 24px;
+  border-radius:30px;
+  font-weight:bold;
+}
+
+.scoreboard{
+  margin:30px auto;
+  width:320px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,.55);
+  padding:18px;
+  border-radius:20px;
+  font-size:20px;
+}
+
+.menu-grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.menu-grid button{
+  border:none;
+  border-radius:18px;
+  padding:22px;
+  color:white;
+  font-size:18px;
+  font-weight:bold;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+.green{background:#1fa63d;}
+.gold{background:#b48b12;}
+.blue{background:#1e67c7;}
+.purple{background:#6f3fd6;}
+.gray{background:#4d5663;}
+.red{background:#b92c2c;}
+
+.footer-bar{
+  margin-top:30px;
+  text-align:center;
+  background:rgba(0,0,0,.45);
+  padding:14px;
+  border-radius:18px;
+  backdrop-filter:blur(8px);
+}
