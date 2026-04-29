@@ -3,115 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Futebol de Campo — Raiz Rural / Raiz Florestal</title>
-
+  <title>Futebol de Campo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- TELA PRINCIPAL -->
-  <section id="home" class="screen active">
-    <div class="hero-card">
-      <h1>⚽ FUTEBOL DE CAMPO</h1>
-      <p>Raiz Rural • Raiz Florestal</p>
+<div class="stadium-bg"></div>
+<div class="overlay"></div>
 
-      <button onclick="goTo('login')">Entrar com Google</button>
-      <button onclick="goTo('playerEditor')">Criar Jogador</button>
-      <button onclick="goTo('teamBuilder')">Criar Time</button>
-      <button onclick="goTo('matchConfig')">Jogar Partida 4x4</button>
-      <button onclick="goTo('admin')">Painel Administrativo</button>
+<div class="app">
+
+  <header class="topbar">
+    <div class="player-box">
+      <div class="avatar">⚽</div>
+      <div>
+        <h3>JOGADOR 01</h3>
+        <p>Conectado com Google</p>
+      </div>
     </div>
+
+    <div class="top-actions">
+      <button>🏆 Ranking</button>
+      <button>📖 Manual</button>
+      <button>⚙ Config</button>
+    </div>
+  </header>
+
+  <main class="hero">
+    <h1>FUTEBOL DE CAMPO</h1>
+    <h2>Raiz Rural • Raiz Florestal</h2>
+    <div class="tag">4x4</div>
+
+    <div class="scoreboard">
+      <span>Casa 0</span>
+      <strong>00:00</strong>
+      <span>Visitante 0</span>
+    </div>
+  </main>
+
+  <section class="menu-grid">
+    <button class="green">▶ JOGAR</button>
+    <button class="gold">🏆 TORNEIOS</button>
+    <button class="blue">🛡 SELEÇÃO DE TIMES</button>
+    <button class="purple">👤 CRIAR JOGADOR</button>
+    <button class="gray">👥 ADMINISTRAR TIMES</button>
+    <button class="red">⚙ CONFIGURAÇÕES</button>
   </section>
 
-  <!-- LOGIN -->
-  <section id="login" class="screen">
-    <div class="card">
-      <h2>Entrar</h2>
-      <p>Login com Google (ligaremos depois)</p>
-      <button onclick="goTo('home')">Voltar</button>
-    </div>
-  </section>
+  <footer class="footer-bar">
+    ESTÁDIO RAIZ • Torcida Real • Campo 4x4
+  </footer>
 
-  <!-- EDITOR DE JOGADOR -->
-  <section id="playerEditor" class="screen">
-    <div class="card">
-      <h2>Criar / Editar Jogador</h2>
+</div>
 
-      <input id="playerName" placeholder="Nome do jogador">
-
-      <select id="playerSex">
-        <option>Masculino</option>
-        <option>Feminino</option>
-      </select>
-
-      <select id="playerPosition">
-        <option>Goleiro</option>
-        <option>Zagueiro</option>
-        <option>Meio</option>
-        <option>Atacante</option>
-      </select>
-
-      <button onclick="savePlayer()">Salvar jogador</button>
-      <button class="secondary" onclick="removePlayer()">Excluir último</button>
-
-      <div id="playersList"></div>
-
-      <button onclick="goTo('home')">Voltar</button>
-    </div>
-  </section>
-
-  <!-- CRIAR TIME -->
-  <section id="teamBuilder" class="screen">
-    <div class="card">
-      <h2>Montar Time</h2>
-      <p>4 titulares + 4 reservas</p>
-
-      <div id="teamList"></div>
-
-      <button onclick="goTo('home')">Voltar</button>
-    </div>
-  </section>
-
-  <!-- CONFIG PARTIDA -->
-  <section id="matchConfig" class="screen">
-    <div class="card">
-      <h2>Configurar Partida</h2>
-
-      <label>Campo</label>
-      <select>
-        <option>Barro</option>
-        <option>Areia</option>
-        <option>Terra</option>
-        <option>Praia</option>
-        <option>Capim</option>
-      </select>
-
-      <label>Câmera</label>
-      <select>
-        <option>Perto</option>
-        <option>Longe</option>
-      </select>
-
-      <label>Tempo</label>
-      <select>
-        <option>2 minutos</option>
-        <option>4 minutos</option>
-      </select>
-
-      <button>Começar Jogo</button>
-      <button class="secondary" onclick="goTo('home')">Voltar</button>
-    </div>
-  </section>
-
-  <!-- ADMIN -->
-  <section id="admin" class="screen">
-    <div class="card">
-      <h2>Painel Administrativo</h2>
-      <p>Criar torneios / controlar partidas / cadastro</p>
-      <button onclick="goTo('home')">Voltar</button>
-    </div>
-  </section>
-
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
