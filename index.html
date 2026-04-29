@@ -1,220 +1,117 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Futebol de Campo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Futebol de Campo — Raiz Rural / Raiz Florestal</title>
 
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:#0f1f10;
-color:white;
-}
-
-header{
-padding:20px;
-text-align:center;
-background:#1f7a32;
-font-size:28px;
-font-weight:bold;
-}
-
-.sub{
-font-size:14px;
-opacity:.8;
-}
-
-.container{
-padding:20px;
-}
-
-.card{
-background:#1c2a1c;
-padding:20px;
-border-radius:20px;
-margin-bottom:15px;
-box-shadow:0 0 20px rgba(0,0,0,.3);
-}
-
-button,select,input{
-width:100%;
-padding:14px;
-margin-top:10px;
-border:none;
-border-radius:12px;
-font-size:16px;
-}
-
-button{
-background:#33aa44;
-color:white;
-font-weight:bold;
-}
-
-.player{
-background:#243424;
-padding:12px;
-border-radius:12px;
-margin-top:10px;
-}
-
-.hidden{
-display:none;
-}
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-⚽ FUTEBOL DE CAMPO
-<div class="sub">Raiz Rural • Raiz Florestal</div>
-</header>
+  <!-- TELA PRINCIPAL -->
+  <section id="home" class="screen active">
+    <div class="hero-card">
+      <h1>⚽ FUTEBOL DE CAMPO</h1>
+      <p>Raiz Rural • Raiz Florestal</p>
 
-<div class="container">
+      <button onclick="goTo('login')">Entrar com Google</button>
+      <button onclick="goTo('playerEditor')">Criar Jogador</button>
+      <button onclick="goTo('teamBuilder')">Criar Time</button>
+      <button onclick="goTo('matchConfig')">Jogar Partida 4x4</button>
+      <button onclick="goTo('admin')">Painel Administrativo</button>
+    </div>
+  </section>
 
-<div class="card">
-<button onclick="abrirEditor()">Criar / Editar Jogador</button>
-<button onclick="abrirTime()">Adicionar ao Time</button>
-<button onclick="abrirPartida()">Partida 4x4</button>
-</div>
+  <!-- LOGIN -->
+  <section id="login" class="screen">
+    <div class="card">
+      <h2>Entrar</h2>
+      <p>Login com Google (ligaremos depois)</p>
+      <button onclick="goTo('home')">Voltar</button>
+    </div>
+  </section>
 
-<div id="editor" class="card hidden">
-<h2>Jogador</h2>
+  <!-- EDITOR DE JOGADOR -->
+  <section id="playerEditor" class="screen">
+    <div class="card">
+      <h2>Criar / Editar Jogador</h2>
 
-<input id="nome" placeholder="Nome do jogador">
+      <input id="playerName" placeholder="Nome do jogador">
 
-<select id="sexo">
-<option>Masculino</option>
-<option>Feminino</option>
-</select>
+      <select id="playerSex">
+        <option>Masculino</option>
+        <option>Feminino</option>
+      </select>
 
-<select id="posicao">
-<option>Goleiro</option>
-<option>Zagueiro</option>
-<option>Meio</option>
-<option>Atacante</option>
-</select>
+      <select id="playerPosition">
+        <option>Goleiro</option>
+        <option>Zagueiro</option>
+        <option>Meio</option>
+        <option>Atacante</option>
+      </select>
 
-<button onclick="salvarJogador()">Salvar jogador</button>
-<button onclick="excluirJogador()">Excluir último jogador</button>
+      <button onclick="savePlayer()">Salvar jogador</button>
+      <button class="secondary" onclick="removePlayer()">Excluir último</button>
 
-<div id="listaJogadores"></div>
-</div>
+      <div id="playersList"></div>
 
-<div id="time" class="card hidden">
-<h2>Time (4 titulares + 4 reservas)</h2>
-<div id="listaTime"></div>
-</div>
+      <button onclick="goTo('home')">Voltar</button>
+    </div>
+  </section>
 
-<div id="partida" class="card hidden">
-<h2>Configuração da partida</h2>
+  <!-- CRIAR TIME -->
+  <section id="teamBuilder" class="screen">
+    <div class="card">
+      <h2>Montar Time</h2>
+      <p>4 titulares + 4 reservas</p>
 
-<select>
-<option>Barro</option>
-<option>Areia</option>
-<option>Terra</option>
-<option>Praia</option>
-<option>Capim</option>
-</select>
+      <div id="teamList"></div>
 
-<select>
-<option>Câmera perto</option>
-<option>Câmera longe</option>
-</select>
+      <button onclick="goTo('home')">Voltar</button>
+    </div>
+  </section>
 
-<select>
-<option>2 minutos</option>
-<option>4 minutos</option>
-</select>
+  <!-- CONFIG PARTIDA -->
+  <section id="matchConfig" class="screen">
+    <div class="card">
+      <h2>Configurar Partida</h2>
 
-<button onclick="alert('🔔 Apito inicial! Começou a partida.')">
-Iniciar Partida
-</button>
-</div>
+      <label>Campo</label>
+      <select>
+        <option>Barro</option>
+        <option>Areia</option>
+        <option>Terra</option>
+        <option>Praia</option>
+        <option>Capim</option>
+      </select>
 
-</div>
+      <label>Câmera</label>
+      <select>
+        <option>Perto</option>
+        <option>Longe</option>
+      </select>
 
-<script>
-let jogadores=[];
+      <label>Tempo</label>
+      <select>
+        <option>2 minutos</option>
+        <option>4 minutos</option>
+      </select>
 
-function abrirEditor(){
-esconderTudo();
-document.getElementById("editor").classList.remove("hidden");
-}
+      <button>Começar Jogo</button>
+      <button class="secondary" onclick="goTo('home')">Voltar</button>
+    </div>
+  </section>
 
-function abrirTime(){
-esconderTudo();
-document.getElementById("time").classList.remove("hidden");
-mostrarTime();
-}
+  <!-- ADMIN -->
+  <section id="admin" class="screen">
+    <div class="card">
+      <h2>Painel Administrativo</h2>
+      <p>Criar torneios / controlar partidas / cadastro</p>
+      <button onclick="goTo('home')">Voltar</button>
+    </div>
+  </section>
 
-function abrirPartida(){
-esconderTudo();
-document.getElementById("partida").classList.remove("hidden");
-}
-
-function esconderTudo(){
-document.getElementById("editor").classList.add("hidden");
-document.getElementById("time").classList.add("hidden");
-document.getElementById("partida").classList.add("hidden");
-}
-
-function salvarJogador(){
-let nome=document.getElementById("nome").value;
-let sexo=document.getElementById("sexo").value;
-let posicao=document.getElementById("posicao").value;
-
-if(!nome) return;
-
-jogadores.push({
-nome,
-sexo,
-posicao
-});
-
-mostrarJogadores();
-mostrarTime();
-
-document.getElementById("nome").value="";
-}
-
-function excluirJogador(){
-jogadores.pop();
-mostrarJogadores();
-mostrarTime();
-}
-
-function mostrarJogadores(){
-let area=document.getElementById("listaJogadores");
-area.innerHTML="";
-
-jogadores.forEach(j=>{
-area.innerHTML+=`
-<div class="player">
-${j.nome} — ${j.sexo} — ${j.posicao}
-</div>
-`;
-});
-}
-
-function mostrarTime(){
-let area=document.getElementById("listaTime");
-area.innerHTML="";
-
-jogadores.slice(0,8).forEach((j,i)=>{
-let tipo=i<4 ? "Titular" : "Reserva";
-
-area.innerHTML+=`
-<div class="player">
-${tipo}: ${j.nome}
-</div>
-`;
-});
-}
-</script>
-
+  <script src="app.js"></script>
 </body>
-  </html>
+</html>
