@@ -1,4 +1,5 @@
 function abrirPartida() {
+  criarControles();
   document.body.innerHTML = `
     <canvas id="gameCanvas"></canvas>
     <div id="hud">
