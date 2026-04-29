@@ -29,15 +29,16 @@ function iniciarJogo() {
   };
 
   const jogadores = [
-    {x:120,y:canvas.height/2,cor:"#00aa44",tipo:"goleiro"},
-    {x:250,y:220,cor:"#00aa44",tipo:"defensor"},
-    {x:320,y:420,cor:"#00aa44",tipo:"meio"},
-    {x:430,y:320,cor:"#00aa44",tipo:"atacante"},
+  {x:120,y:canvas.height/2,cor:"#00aa44",tipo:"goleiro"},
+  {x:250,y:220,cor:"#00aa44",tipo:"defensor"},
+  {x:320,y:420,cor:"#00aa44",tipo:"meio"},
+  {x:430,y:320,cor:"#00aa44",tipo:"atacante",controlado:true},
 
-    {x:canvas.width-120,y:canvas.height/2,cor:"#e0b100",tipo:"goleiro"},
-    {x:canvas.width-250,y:220,cor:"#e0b100",tipo:"defensor"},
-    {x:canvas.width-320,y:420,cor:"#e0b100",tipo:"meio"},
-    {x:canvas.width-430,y:320,cor:"#e0b100",tipo:"atacante"}
+  {x:canvas.width-120,y:canvas.height/2,cor:"#e0b100",tipo:"goleiro"},
+  {x:canvas.width-250,y:220,cor:"#e0b100",tipo:"defensor"},
+  {x:canvas.width-320,y:420,cor:"#e0b100",tipo:"meio"},
+  {x:canvas.width-430,y:320,cor:"#e0b100",tipo:"atacante"}
+];
   ];
 
   function desenharCampo() {
@@ -83,10 +84,24 @@ function iniciarJogo() {
     ctx.arc(bola.x,bola.y,bola.r,0,Math.PI*2);
     ctx.fill();
   }
+  function moverJogador(){
+  const p = jogadores.find(j=>j.controlado);
+  if(!p) return;
+
+  if(control.left) p.x -= control.speed;
+  if(control.right) p.x += control.speed;
+  if(control.up) p.y -= control.speed;
+  if(control.down) p.y += control.speed;
+
+  if(p.x < 40) p.x = 40;
+  if(p.x > canvas.width-40) p.x = canvas.width-40;
+  if(p.y < 40) p.y = 40;
+  if(p.y > canvas.height-40) p.y = canvas.height-40;
+  }
 
   function loop() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
-
+moverJogador();
     desenharCampo();
     desenharJogadores();
     desenharBola();
